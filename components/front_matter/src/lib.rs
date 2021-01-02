@@ -1,12 +1,12 @@
 use lazy_static::lazy_static;
 use serde_derive::{Deserialize, Serialize};
 
+use chrono::offset::Utc;
+use chrono::DateTime;
 use errors::{bail, Error, Result};
 use regex::Regex;
 use std::path::Path;
 use std::process::Command;
-use chrono::DateTime;
-use chrono::offset::Utc;
 
 mod page;
 mod section;
@@ -15,9 +15,10 @@ pub use page::PageFrontMatter;
 pub use section::SectionFrontMatter;
 
 lazy_static! {
-    static ref PAGE_RE: Regex =
-        Regex::new(r"^[[:space:]]*(\+\+\+|<!--)(\r?\n(?s).*?(?-s))(\+\+\+|-->)\r?\n?((?s).*(?-s))$").unwrap();
-    
+    static ref PAGE_RE: Regex = Regex::new(
+        r"^[[:space:]]*(\+\+\+|<!--)(\r?\n(?s).*?(?-s))(\+\+\+|-->)\r?\n?((?s).*(?-s))$"
+    )
+    .unwrap();
     static ref TITLE_RE: Regex =
         Regex::new(r"^[[:space:]]*#[ ]*(.*)[ ]*\r?\n?((?s).*(?-s))$").unwrap();
 }

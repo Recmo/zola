@@ -71,7 +71,8 @@ impl FileInfo {
         // Splitting on `.` as we might have a language so it isn't *only* index but also index.fr
         // etc
         let base_name = name.split('.').collect::<Vec<_>>()[0];
-        let page_folder = !components.is_empty() && (base_name == "index"  || base_name == components.last().unwrap());
+        let page_folder = !components.is_empty()
+            && (base_name == "index" || base_name == components.last().unwrap());
         if page_folder {
             components.pop();
             // also set parent_path to grandparent instead
@@ -88,7 +89,7 @@ impl FileInfo {
             name,
             components,
             relative,
-            page_folder
+            page_folder,
         }
     }
 
