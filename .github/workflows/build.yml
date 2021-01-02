@@ -2,22 +2,15 @@ on: [push, pull_request]
 name: build
 jobs:
   build:
-    name: Build (release)
+    name: Build image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           submodules: recursive
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --all-features --all-targets --release
+      - name: Build
+        uses: docker/build-push-action@v2
 
   test:
     name: Test
