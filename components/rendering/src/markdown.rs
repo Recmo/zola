@@ -181,7 +181,7 @@ fn escape_markdown(content: &str) -> String {
 }
 
 fn protect_latex(content: &str) -> String {
-    use regex::{Regex, Captures};
+    use regex::{Captures, Regex};
     lazy_static! {
         static ref INLINE_RE: Regex = Regex::new(r"([^\\]\$)(.*?[^\\])(\$)").unwrap();
         static ref DISPLAY_RE: Regex = Regex::new(r"(?sm)(^\$\$$)(.*?)(^\$\$$)").unwrap();

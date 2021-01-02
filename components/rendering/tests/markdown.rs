@@ -1004,7 +1004,6 @@ fn can_render_commented_out_shortcodes_fine() {
     assert_eq!(res.body, expected);
 }
 
-
 // https://zola.discourse.group/t/zola-12-issue-with-continue-reading/590/7
 #[test]
 fn can_render_read_more_after_shortcode() {

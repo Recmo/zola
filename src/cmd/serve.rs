@@ -22,11 +22,11 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 use std::fs::{read_dir, remove_dir_all};
+use std::net::{SocketAddrV4, TcpListener};
 use std::path::{Path, PathBuf};
 use std::sync::mpsc::channel;
 use std::thread;
 use std::time::{Duration, Instant};
-use std::net::{SocketAddrV4, TcpListener};
 
 use hyper::header;
 use hyper::service::{make_service_fn, service_fn};
